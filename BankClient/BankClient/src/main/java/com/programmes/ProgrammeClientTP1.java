@@ -13,7 +13,6 @@ import java.util.Scanner;
  * @since 2023-09-01
  */
 public class ProgrammeClientTP1 {
-	scanner scanner = new Scanner(System.in);
 	/**
 	 * Méthode principale du programme.
 	 *
