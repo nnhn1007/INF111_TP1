@@ -19,7 +19,7 @@ public class ProgrammeClientTP1 {
 	 * @param args Arguments du programme
 	 */
 	public static void main(String[] args) {
-	 	Scanner scanner = new Scanner(System.in);
+	 	Scanner scanner = new Scanner(System.in); //test
 		Scanner clavier = new Scanner(System.in);
 		Client client = new Client();
 		String saisie;
