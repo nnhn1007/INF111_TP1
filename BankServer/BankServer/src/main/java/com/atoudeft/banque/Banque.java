@@ -9,6 +9,8 @@ import java.util.List;
 public class Banque implements Serializable {
     private String nom;
     private List<CompteClient> comptes;
+    private static final int SIX =6;
+    private static final int HUIT=8;
 
     public Banque(String nom) {
         this.nom = nom;
@@ -94,20 +96,28 @@ public class Banque implements Serializable {
      * @return true si le compte a été créé correctement
      */
     public boolean ajouter(String numCompteClient, String nip) {
-        /*À compléter et modifier :
-            - Vérifier que le numéro a entre 6 et 8 caractères et ne contient que des lettres majuscules et des chiffres.
-              Sinon, retourner false.
-            - Vérifier que le nip a entre 4 et 5 caractères et ne contient que des chiffres. Sinon,
-              retourner false.
-            - Vérifier s'il y a déjà un compte-client avec le numéro, retourner false.
-            - Sinon :
-                . Créer un compte-client avec le numéro et le nip;
-                . Générer (avec CompteBancaire.genereNouveauNumero()) un nouveau numéro de compte bancaire qui n'est
-                  pas déjà utilisé;
-                . Créer un compte-chèque avec ce numéro et l'ajouter au compte-client;
-                . Ajouter le compte-client à la liste des comptes et retourner true.
-         */
-        return this.comptes.add(new CompteClient(numCompteClient,nip)); //À modifier
+        int cptChar=0;
+        for (int i = 0; i <numCompteClient.length() ; i++) {
+            //insère le caractère à la position i de la sting numCompteClient. Il manque la vérification de chiffre
+            char caractere= numCompteClient.charAt(i);
+            if(caractere>='a'&& caractere<='z'){ //
+                cptChar++;
+            }
+            //Vérification de lettres minuscules dans le numéro de compte. Il manque la vérification de caracs spéciaux
+            else if(caractere>='A'&& caractere<='Z'){
+                return false;
+            }
+        }
+        if(cptChar>=6 && cptChar<=8){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+
+
+        // return this.comptes.add(new CompteClient(numCompteClient,nip)); //À modifier
     }
 
     /**
