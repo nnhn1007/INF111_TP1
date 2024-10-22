@@ -7,16 +7,16 @@ public class CompteCheque extends CompteBancaire{
      * @param numero numéro du compte
      * @param type   type du compte
      */
-    private static double ZERO =0.00;
+    private static final double ZERO =0.00;
 
     public CompteCheque(String numero, TypeCompte type) {
         super(numero, type);
     }
 
-    /**
+    /** Méthode qui réalise un dépot d'argent dans le solde d'un compte-chèque
      *
      * @param montant Variable double qui représente le  montant à ajouter au solde.
-     * @return
+     * @return True si le solde initial était strictement positive, sinon retourne false.
      */
     @Override
     public boolean crediter(double montant) {
@@ -27,15 +27,16 @@ public class CompteCheque extends CompteBancaire{
         return false;
     }
 
-    /**
+    /** Méthode qui réalise un retrait d'argent dans le solde d'un compte-chèque
      *
      * @param montant Variable double qui représente le  montant à débiter du solde.
-     * @return
+     * @return True si le solde initial était strictement positive et que
+     * le solde initiale est plus grand ou égal au montant à retirer, sinon retourne false.
      */
     @Override
     public boolean debiter(double montant) {
         double solde =getSolde();
-        if(solde>ZERO && solde>montant){ // Strictement positive et solde > montant à debiter
+        if(solde>ZERO && solde>=montant){ // Strictement positive et solde > montant à debiter
             solde-=montant; // Inutile ?
         }
         return false;
@@ -43,8 +44,8 @@ public class CompteCheque extends CompteBancaire{
 
     /**
      *
-     * @param numeroFacture
-     * @param montant
+     * @param numeroFacture Variable string qui définit le numéro de facture.
+     * @param montant Variable double qui représente le montant à facturer de la facture.
      * @param description
      * @return
      */
@@ -55,7 +56,7 @@ public class CompteCheque extends CompteBancaire{
 
     /**
      *
-     * @param montant
+     * @param montant Variable double qui représente le montant transferé.
      * @param numeroCompteDestinataire
      * @return
      */

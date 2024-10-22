@@ -108,7 +108,7 @@ public class Banque implements Serializable {
                 return false;
             }
         }
-        if(cptChar>=6 && cptChar<=8){
+        if(cptChar>=SIX && cptChar<=HUIT){
             return true;
         }
         else {
