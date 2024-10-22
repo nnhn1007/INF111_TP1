@@ -85,11 +85,13 @@ public class ServeurBanque extends Serveur {
      */
     public void supprimeInactifs() {
         long tempsEcoule= System.currentTimeMillis()-DELAI_INACTIVITE; // À vérifier je suis pas sur.
+        ServeurBanque serveurBanque= new ServeurBanque(); // Je pense que c'est ça si on se fit à la page 22 du doc mais
+                                                          // jsp ce que les ports définissent
        for(Connexion connexion: connectes){ // Boucle qui va parcourir la liste des connexions jusqu'à null.
            if(tempsEcoule>DELAI_INACTIVITE){
                 connexion.envoyer("END"); //Envoie un message de END à l'utilisateur.
                 connexion.close(); // Ferme la session de l'utisateur après qu'il ai passé 30 secondes en état inactif
-                connectes.remove(connexion); // À vérifier je suis pas sur.
+                serveurBanque.enlever(connexion);// À vérifier je suis pas sur.
             }
        }
     }
