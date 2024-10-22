@@ -84,9 +84,9 @@ public class ServeurBanque extends Serveur {
      * du TP).
      */
     public void supprimeInactifs() {
-        long tempEcoule= System.currentTimeMillis()-DELAI_INACTIVITE; // À vérifier je suis pas sur.
+        long tempsEcoule= System.currentTimeMillis()-DELAI_INACTIVITE; // À vérifier je suis pas sur.
        for(Connexion connexion: connectes){ // Boucle qui va parcourir la liste des connexions jusqu'à null.
-           if(tempEcoule>DELAI_INACTIVITE){
+           if(tempsEcoule>DELAI_INACTIVITE){
                 connexion.envoyer("END"); //Envoie un message de END à l'utilisateur.
                 connexion.close(); // Ferme la session de l'utisateur après qu'il ai passé 30 secondes en état inactif
                 connectes.remove(connexion); // À vérifier je suis pas sur.
