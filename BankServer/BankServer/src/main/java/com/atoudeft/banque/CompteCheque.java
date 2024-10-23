@@ -7,10 +7,13 @@ public class CompteCheque extends CompteBancaire{
      * @param numero numéro du compte
      * @param type   type du compte
      */
-    private static final double ZERO =0.00;
+    private static final double ZERO = 0.00;
+    private boolean estCompteCheque; //Q2.3, pas certaine qu'on peut l'ajouter
 
     public CompteCheque(String numero, TypeCompte type) {
+
         super(numero, type);
+        this.estCompteCheque = true;//Q2.3
     }
 
     /** Méthode qui réalise un dépot d'argent dans le solde d'un compte-chèque
@@ -63,5 +66,9 @@ public class CompteCheque extends CompteBancaire{
     @Override
     public boolean transferer(double montant, String numeroCompteDestinataire) {
         return false;
+    }
+
+    public boolean isCompteCheque(){ //Q2.3
+        return estCompteCheque;
     }
 }

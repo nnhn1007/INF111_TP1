@@ -1,5 +1,6 @@
 package com.atoudeft.banque;
 
+
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.Serializable;
@@ -9,8 +10,8 @@ import java.util.List;
 public class Banque implements Serializable {
     private String nom;
     private List<CompteClient> comptes;
-    private static final int SIX =6;
-    private static final int HUIT=8;
+    private static final int SIX = 6;
+    private static final int HUIT= 8;
 
     public Banque(String nom) {
         this.nom = nom;
@@ -96,7 +97,7 @@ public class Banque implements Serializable {
      * @return true si le compte a été créé correctement
      */
     public boolean ajouter(String numCompteClient, String nip) {
-        int cptChar=0;
+        int cptChar = 0;
         for (int i = 0; i <numCompteClient.length() ; i++) {
             //insère le caractère à la position i de la sting numCompteClient. Il manque la vérification de chiffre
             char caractere= numCompteClient.charAt(i);
@@ -128,6 +129,20 @@ public class Banque implements Serializable {
      */
     public String getNumeroCompteParDefaut(String numCompteClient) {
         //À compléter : retourner le numéro du compte-chèque du compte-client.
-        return null; //À modifier
+         //return null; //À modifier
+
+        //Rechercher numCompteClient du client
+        CompteClient cptClient = getCompteClient(numCompteClient);
+
+        if(compteClient != null){
+            //parcourir la liste CompteClient
+            for(CompteBancaire compte : compteClient.comptes){
+                //verifier qu'il s'agit bien d'un compte-cheque
+                if(compte.estCompteCheque()){
+                    //retourne le numero du compte-cheque
+                    return compte.getNumero();
+                }
+            }
+        }
     }
 }
