@@ -138,7 +138,7 @@ public class Banque implements Serializable {
             //parcourir la liste CompteClient
             for(CompteBancaire compte : compteClient.comptes){
                 //verifier qu'il s'agit bien d'un compte-cheque
-                if(compte.estCompteCheque()){
+                if(compte.estCompteCheque()){ // j'ai créé un boolean estCompteCheque dans la classe CompteCheque, mais jsp trop si on peut faire ça
                     //retourne le numero du compte-cheque
                     return compte.getNumero();
                 }
